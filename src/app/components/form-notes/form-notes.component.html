@@ -1,0 +1,88 @@
+<form class="grid grid-cols-2 gap-3 mt-3" (submit)="handleSubmit($event)">
+  <fieldset>
+    <label class="font-mono text-lg font-medium text-white">
+      ID Estudiante
+    </label>
+    <input
+      class="w-full p-1 pl-2 font-mono rounded-md outline-none"
+      type="text"
+      name="studentId"
+      placeholder="ID del estudiante..."
+      [value]="userInput().studentId"
+      (input)="handleChangeNotes($event)"
+    />
+  </fieldset>
+
+  <fieldset>
+    <label class="font-mono text-lg font-medium text-white">
+      Nombre Estudiante
+    </label>
+    <input
+      class="w-full p-1 pl-2 font-mono rounded-md outline-none"
+      type="text"
+      name="studentName"
+      placeholder="Nombre del estudiante..."
+      [value]="userInput().studentName"
+      (input)="handleChangeNotes($event)"
+    />
+  </fieldset>
+
+  <fieldset>
+    <label class="font-mono text-lg font-medium text-white">
+      Parcial 1
+    </label>
+    <input
+      class="w-full p-1 pl-2 font-mono rounded-md outline-none"
+      type="number"
+      min="0"
+      max="5"
+      name="partial_1"
+      [value]="userInput().partial_1"
+      (input)="handleChangeNotes($event)"
+    />
+  </fieldset>
+
+  <fieldset>
+    <label class="font-mono text-lg font-medium text-white">
+      Parcial 2
+    </label>
+    <input
+      class="w-full p-1 pl-2 font-mono rounded-md outline-none"
+      type="number"
+      min="0"
+      max="5"
+      name="partial_2"
+      [value]="userInput().partial_2"
+      (input)="handleChangeNotes($event)"
+    />
+  </fieldset>
+
+  <fieldset>
+    <label class="font-mono text-lg font-medium text-white">
+      Seguimiento
+    </label>
+    <input
+      class="w-full p-1 pl-2 font-mono rounded-md outline-none"
+      type="number"
+      min="0"
+      max="5"
+      name="tracing"
+      [value]="userInput().tracing"
+      (input)="handleChangeNotes($event)"
+    />
+  </fieldset>
+
+  @if (error()) {
+    <div
+      class="w-full col-span-2 p-3 font-mono text-lg text-white bg-red-600 rounded-md"
+    >
+      * El ID y el nombre del estudiante son requeridos
+    </div>
+  }
+
+  <button
+    class="text-lg col-span-2 py-2 font-semibold font-mono bg-purple-900 rounded-md text-white hover:bg-purple-700 transition-[background]"
+  >
+    Calcular
+  </button>
+</form>
