@@ -1,4 +1,4 @@
-import { Component, Input, type WritableSignal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, type WritableSignal } from '@angular/core';
 
 import type { Student, UserInput } from '../../../types';
 
@@ -13,6 +13,15 @@ export class FormNotesComponent {
   @Input() userInput!: WritableSignal<UserInput>;
   @Input() students!: WritableSignal<Student[]>;
   @Input() error!: WritableSignal<boolean>;
-  @Input() handleChangeNotes!: (ev: Event) => void;
-  @Input() handleSubmit!: (ev: Event) => void;
+
+  @Output() changeNotes = new EventEmitter();
+  @Output() submitForm = new EventEmitter();
+
+  handleChangeNotes(event: Event) {
+    this.changeNotes.emit(event);
+  }
+
+  handleSubmit(event: Event) {
+    this.submitForm.emit(event);
+  }
 }

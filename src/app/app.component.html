@@ -15,8 +15,8 @@
         [userInput]="userInput"
         [error]="error"
         [students]="students"
-        [handleChangeNotes]="handleChangeNotes"
-        [handleSubmit]="handleSubmit"
+        (changeNotes)="handleChangeNotes($event)"
+        (submitForm)="handleSubmit($event)"
       ></app-form-notes>
     </div>
 
@@ -27,7 +27,7 @@
 
       <app-students-table
         [students]="students"
-        [handleDeleteStudent]="handleDeleteStudent"
+        (deleteStudent)="handleDeleteStudent($event)"
       ></app-students-table>
     </div>
   </section>

@@ -1,4 +1,4 @@
-import { Component, Input, type WritableSignal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, type WritableSignal } from '@angular/core';
 
 import type { Student } from '../../../types';
 
@@ -11,5 +11,9 @@ import type { Student } from '../../../types';
 })
 export class StudentsTableComponent {
   @Input() students!: WritableSignal<Student[]>;
-  @Input() handleDeleteStudent!:(studentId: string) => void;
+  @Output() deleteStudent = new EventEmitter();
+
+  handleDeleteStudent(studentId: string) {
+    this.deleteStudent.emit(studentId);
+  }
 }
